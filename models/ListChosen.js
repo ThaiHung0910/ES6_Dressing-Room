@@ -3,8 +3,11 @@ import choseItem from "./ChoseItem.js";
 
 
 const tabPanes = dataJSON.tabPanes,
-  tabContent = document.querySelector(".tab-content"), navPills = dataJSON.navPills;
-let userChosen = { idChosen: 0, typeChosen: "topclothes", itemChosen: "" };
+  tabContent = document.querySelector(".tab-content"), navPills = dataJSON.navPills,
+  currentModel = document.querySelectorAll(".contain div")
+let userChosen = { idChosen: 0, typeChosen: "topclothes", itemChosen: "" }, 
+model = {}
+
 
 
 let saveValueLocalStorage = (key, value) => {
@@ -15,8 +18,16 @@ let saveValueLocalStorage = (key, value) => {
 let getValueLocalStorage = (key) => {
   var dataLocal = localStorage.getItem(key);
   if (dataLocal) {
-    userChosen = JSON.parse(dataLocal);
-    saveValueLocalStorage("UserChosen", userChosen);
+    switch(key) {
+      case "UserChosen":
+        userChosen = JSON.parse(dataLocal);
+        saveValueLocalStorage(key, userChosen);
+      break;
+      case "Model": 
+        model = JSON.parse(dataLocal)
+        saveValueLocalStorage(key, model)
+      break
+    }
     listChosen();
   } else {
     listChosen()
@@ -35,21 +46,21 @@ let renderListChosen = () => {
 
 export default function listChosen() {
   renderListChosen();
+  choseItem()
   let navItem = document.querySelectorAll(".nav-item");
   navItem.forEach((e, id) => {
     e.addEventListener("click", () => {
       userChosen.idChosen = id;
       userChosen.typeChosen = navPills[id].type;
       document.querySelector(".nav-item.active").classList.remove("active");
-      e.classList.toggle("active");
+      e.classList.add("active");
       choseItem()
       saveValueLocalStorage("UserChosen", userChosen);
     });
   });
-  choseItem()
 }
 
-export { getValueLocalStorage, saveValueLocalStorage, userChosen, tabPanes, tabContent, navPills };
+export { getValueLocalStorage, saveValueLocalStorage, userChosen, tabPanes, tabContent, model, currentModel};
 
 console.log("DataList: ", navPills)
 console.log("DataItem: ", tabPanes)

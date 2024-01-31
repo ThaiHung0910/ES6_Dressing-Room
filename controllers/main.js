@@ -1,4 +1,5 @@
-import { getValueLocalStorage, navPills, saveValueLocalStorage, userChosen } from "../models/ListChosen.js";
+import { getValueLocalStorage} from "../models/ListChosen.js";
 
 getValueLocalStorage("UserChosen")
+getValueLocalStorage("Model")
 

@@ -1,81 +1,26 @@
 import {
+  currentModel,
+  model,
   saveValueLocalStorage,
   tabContent,
   tabPanes,
-  userChosen,
-  navPills,
+  userChosen
 } from "./ListChosen.js";
 
-let itemUrl = [],
-  currentModel = document.querySelectorAll(".contain div"),
-  model = {};
-
-currentModel.forEach((e) => {
-  model[e.className] = window.getComputedStyle(e).backgroundImage;
-  // saveValueLocalStorage("Model", model);
-});
-
-
+let itemUrl = []
 
 let renderModel = () => {
-  currentModel.forEach((e, id) => {
-    let type = userChosen.typeChosen, item = userChosen.itemChosen ,part = e.className, value = `url('${item}')`
-    
-    switch (part) {
-      case "bikinitop":
-        if(type == "topclothes") {
-          model[part] = value
-        }
-        console.log(1)
-        break;
-      case "bikinibottom":
-        if(type == "botclothes") {
-          model[part] = value
-        }
-        break;
-      case "feet":
-        if(type == "shoes") {
-          model[part] = value
-        }
-        break;
-      case "handbag":
-        if(type == "handbags") {
-          model[part] = value
-        }
-        break;
-      case "necklace":
-        if(type == "necklaces") {
-          model[part] = value
-        }
-        break;
-      case "hairstyle":
-        if(type == "hairstyle") {
-          model[part] = value
-        }
-        break;
-      case "background":
-        if(type == "background") {
-          model[part] = value
-        }
-        break;
-    }
-    // saveValueLocalStorage("Model", model)
-  });
-  
-  console.log(model)
   for (let key in model) {
     document.querySelector(`.${key}`).style.backgroundImage = model[key]
   }
-  
 };
 
-
-export let renderChoseItem = () => {
+let renderChoseItem = () => {
   let div = document.createElement("div"),
     htmls = []
 
   div.classList.add("row");
-
+  
   tabContent.appendChild(div);
 
   tabPanes.map((e) => {
@@ -88,21 +33,94 @@ export let renderChoseItem = () => {
       itemUrl.push(`${e.imgSrc_png}`);
     }
   });
-  console.log(itemUrl)
   document.querySelector(".tab-content .row").innerHTML = htmls;
 };
 
 export default function choseItem() {
   itemUrl = []
   renderChoseItem();
-  let itemBtn = document.querySelectorAll(".item_btn");
+  renderModel();
+  let itemBtn = document.querySelectorAll(".item_btn")
   itemBtn.forEach((e, id) => {
     e.addEventListener("click", () => {
-      userChosen.itemChosen = itemUrl[id];
+
+      if(userChosen.itemChosen != itemUrl[id]) {
+        userChosen.itemChosen = itemUrl[id]
+      } else {
+        switch (userChosen.typeChosen) {
+          case "topclothes":
+            userChosen.itemChosen = "../assets/images/allbody/bikini_branew.png"
+          break;
+          case "botclothes":
+            userChosen.itemChosen = "../assets/images/allbody/bikini_pantsnew.png"
+          break;
+          case "shoes": 
+          userChosen.itemChosen = "../assets/images/shoes/shoes1.png"
+          break;
+          case "background": 
+          userChosen.itemChosen = "../assets/background/background1.jpg"
+          break;
+          default:
+            userChosen.itemChosen = ""
+        }
+      } 
+
+      currentModel.forEach((e) => {
+        let type = userChosen.typeChosen, item = userChosen.itemChosen ,part = e.className, value = `url('${item}')`
+        
+        switch (part) {
+          case "bikinitop":
+            if(type == "topclothes") {
+              model[part] = value
+              
+            }
+            break;
+          case "bikinibottom":
+            if(type == "botclothes") {
+              model[part] = value
+              
+            }
+            break;
+          case "feet":
+            if(type == "shoes") {
+              model[part] = value
+              
+            }
+            break;
+          case "handbag":
+            if(type == "handbags") {
+              model[part] = value
+              
+    
+            }
+            break;
+          case "necklace":
+            if(type == "necklaces") {
+              model[part] = value
+              
+    
+            }
+            break;
+          case "hairstyle":
+            if(type == "hairstyle") {
+              model[part] = value
+              
+    
+            }
+            break;
+          case "background":
+            if(type == "background") {
+              model[part] = value
+              
+    
+            }
+            break;
+        }
+      });
+
       renderModel();
+      saveValueLocalStorage("Model", model);
       saveValueLocalStorage("UserChosen", userChosen);
-      console.log(userChosen);
     });
   });
-  renderModel();
 }
