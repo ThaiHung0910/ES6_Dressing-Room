@@ -58,7 +58,7 @@ export default function choseItem() {
           userChosen.itemChosen = "../assets/images/shoes/shoes1.png"
           break;
           case "background": 
-          userChosen.itemChosen = "../assets/background/background1.jpg"
+          userChosen.itemChosen = "../assets/images/background/background1.jpg"
           break;
           default:
             userChosen.itemChosen = ""
