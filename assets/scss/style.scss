@@ -1,3 +1,9 @@
+// Variable
+
+$primary-color : #007bff;
+$bg-color : #eff1f1;
+$color-white: #fff;
+
 /* USER PROFILE PAGE */
 
 
@@ -20,7 +26,7 @@
   padding-top: 0;
   overflow: hidden;
   text-align: center;
-  background-color: #fff;
+  background-color: $color-white;
   background-color: rgba(255, 255, 255, 1);
 }
 
@@ -155,15 +161,15 @@ hr {
     }
   }
   .nav-item.active {
-    background-color: #007bff;
+    background-color: $primary-color;
     .nav-link {
-      color: #fff;
+      color: $color-white;
     }
   }
 }
 
 .well {
-  background-color: #eff1f1;
+  background-color: $bg-color;
   height: 700px;
   width: 100%;
 
@@ -171,10 +177,9 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 16px;
-    text-align: center;
   }
   .card {
-    background-color: #eff1f1;
+    background-color: $bg-color;
   }
 }
 
@@ -196,6 +201,11 @@ hr {
     &:hover {
       opacity: 0.7;
     }
+  }
+
+  .item_btn.chosen {
+    background-color: $primary-color;
+    color: $color-white;
   }
 }
 

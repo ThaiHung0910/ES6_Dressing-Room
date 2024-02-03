@@ -151,7 +151,6 @@ hr {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
-  text-align: center;
 }
 .well .card {
   background-color: #eff1f1;
@@ -171,4 +170,8 @@ hr {
 }
 .item .item_btn:hover {
   opacity: 0.7;
+}
+.item .item_btn.chosen {
+  background-color: #007bff;
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */

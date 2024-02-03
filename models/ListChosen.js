@@ -5,7 +5,7 @@ import choseItem from "./ChoseItem.js";
 const tabPanes = dataJSON.tabPanes,
   tabContent = document.querySelector(".tab-content"), navPills = dataJSON.navPills,
   currentModel = document.querySelectorAll(".contain div")
-let userChosen = { idChosen: 0, typeChosen: "topclothes", itemChosen: "" }, 
+let userChosen = { idTypeChosen: 0, typeChosen: "topclothes", itemChosen: "" }, 
 model = {}
 
 
@@ -15,7 +15,7 @@ let saveValueLocalStorage = (key, value) => {
   localStorage.setItem(key, stringValue);
 };
 
-let getValueLocalStorage = (key) => {
+let getValueLocalStorage = key => {
   var dataLocal = localStorage.getItem(key);
   if (dataLocal) {
     switch(key) {
@@ -36,7 +36,7 @@ let getValueLocalStorage = (key) => {
 
 let renderListChosen = () => {
   let htmls = navPills.map((e, id) => {
-    return `<li class="nav-item ${id} ${userChosen.idChosen == id ? "active" : ""}">
+    return `<li class="nav-item ${userChosen.idTypeChosen == id ? "active" : ""}">
                 <a  class="nav-link">
                 ${e.showName}</a>
                 </li>`;
@@ -50,7 +50,7 @@ export default function listChosen() {
   let navItem = document.querySelectorAll(".nav-item");
   navItem.forEach((e, id) => {
     e.addEventListener("click", () => {
-      userChosen.idChosen = id;
+      userChosen.idTypeChosen = id;
       userChosen.typeChosen = navPills[id].type;
       document.querySelector(".nav-item.active").classList.remove("active");
       e.classList.add("active");

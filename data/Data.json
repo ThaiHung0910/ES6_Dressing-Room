@@ -244,6 +244,30 @@
       "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid, nulla.",
       "imgSrc_jpg": "../assets/images/background/background4_show.jpg",
       "imgSrc_png": "../assets/images/background/background4.jpg"
+    },
+    {
+      "id": "background_5",
+      "type": "background",
+      "name": "Background 5",
+      "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid, nulla.",
+      "imgSrc_jpg": "../assets/images/background/background5_show.jpg",
+      "imgSrc_png": "../assets/images/background/background5.jpg"
+    },
+    {
+      "id": "background_6",
+      "type": "background",
+      "name": "Background 6",
+      "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid, nulla.",
+      "imgSrc_jpg": "../assets/images/background/background6_show.jpg",
+      "imgSrc_png": "../assets/images/background/background6.jpg"
+    },
+    {
+      "id": "background_7",
+      "type": "background",
+      "name": "Background 7",
+      "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid, nulla.",
+      "imgSrc_jpg": "../assets/images/background/background7_show.jpg",
+      "imgSrc_png": "../assets/images/background/background7.jpg"
     }
   ]
 }
